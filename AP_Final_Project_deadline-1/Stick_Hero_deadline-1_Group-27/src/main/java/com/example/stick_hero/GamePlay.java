@@ -45,7 +45,30 @@ public class GamePlay  {
     private Rectangle next_platform;
     @FXML
     AnchorPane main_stuff;
+    public int character_fate;
+    public int Stick_checker(){
+        double p = starting_platform.getLayoutX()+starting_platform.getWidth();
+        double separation=(next_platform.getLayoutX()-p);
+        System.out.println(separation);
+        double difference=stick.getHeight()-separation;
+        if(difference<0){
+            //stick too short case
+            System.out.println("OYE PAPAJI! OYE PAPAJI!");
+            return -1;
+        }
 
+            else if(difference>next_platform.getWidth()){
+                //stick too long case
+                System.out.println("PAIN MAKES ME NUMB");
+                return 0;
+            }else{
+                //stick just right
+                System.out.println("JAI GANESH!");
+                return 1;
+            }
+
+
+    }
 
     public void initialize() {
 
@@ -55,6 +78,7 @@ public class GamePlay  {
             stick.setY(stick.getY() - 10);
         }));
         stick_generate.setCycleCount(Timeline.INDEFINITE);
+
 
         //stick rotation timeline
         Rotate rotation = new Rotate();
@@ -79,6 +103,10 @@ public class GamePlay  {
         System.out.println("Random Doubles: "+rand_dub2);
         next_platform.setLayoutX(rand_dub1);
         next_platform.setWidth(rand_dub2);
+
+
+
+
         //Don't make multiple setOnKeyPressed as the code will call the last event handler
         //this is our keyboard input to code execution block
         main_stuff.setOnKeyPressed( event1 -> {
@@ -116,6 +144,7 @@ public class GamePlay  {
                             System.out.println("Stick has rotated");
                             break;
                     }
+                    character_fate=this.Stick_checker();
                     break;
                 case SHIFT:
                     //I have added this as a case of example : agar tujhe aur koi key press add karna ho toh just add a case here
@@ -142,7 +171,6 @@ public class GamePlay  {
         Game_Stage.setScene(Game_Scene);
         Game_Stage.show();
     }
-    // public void create_stick(){}
     // public void create_pillar(){}
     // public void move_character(){}
     // public void invert_character(){}
