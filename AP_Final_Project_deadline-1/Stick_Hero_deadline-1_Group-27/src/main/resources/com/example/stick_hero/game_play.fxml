@@ -8,20 +8,20 @@
 
 <AnchorPane fx:id="main_stuff" focusTraversable="true" prefHeight="410.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stick_hero.GamePlay">
    <children>
-      <ImageView fx:id="bg" fitHeight="410.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="false">
+      <ImageView  fitHeight="410.0" fitWidth="580.0" pickOnBounds="true">
          <image>
             <Image url="@background_sprite.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="30.0" layoutY="200.0" pickOnBounds="true" preserveRatio="false">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="30.0" layoutY="200.0" pickOnBounds="true">
          <image>
             <Image url="@charachter_sprite.png" />
          </image>
 
       </ImageView>
-      <Rectangle fx:id="stick" layoutX="80" layoutY="195" width="5" height="50" fill="BLACK" />
-      <Rectangle fx:id="startion_platform" arcHeight="5.0" arcWidth="5.0" height="165.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="next_platform" arcHeight="5.0" arcWidth="5.0" height="164.0" layoutX="316.0" layoutY="246.0" stroke="BLACK" strokeType="INSIDE" width="33.0" />
+      <Rectangle fx:id="stick" layoutX="80.0" layoutY="245.0" width="5.0"  fill="BLACK" />
+      <Rectangle fx:id="starting_platform" layoutY="245.0" arcHeight="5.0" arcWidth="5.0" height="165.0"   stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="next_platform" arcHeight="5.0" arcWidth="5.0" height="164.0" layoutX="516.0" layoutY="246.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
       <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="492.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pause_button.png" />
