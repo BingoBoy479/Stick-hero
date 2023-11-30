@@ -1,7 +1,7 @@
 package com.example.stick_hero;
 
 import javafx.animation.KeyValue;
-import javafx.animation.RotateTransition;
+import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,11 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.example.stick_hero.HelloApplication.accessMainStageHeight;
+import static com.example.stick_hero.HelloApplication.accessMainStageWidth;
+
 public class GamePlay  {
+
     private Stage Game_Stage;
     private Scene Game_Scene;
     private int stick_has = 1;
@@ -36,7 +40,12 @@ public class GamePlay  {
     @FXML
     private Rectangle stick;
     @FXML
+    private Rectangle starting_platform;
+    @FXML
+    private Rectangle next_platform;
+    @FXML
     AnchorPane main_stuff;
+
 
     public void initialize() {
 
@@ -58,6 +67,18 @@ public class GamePlay  {
                 new KeyFrame(Duration.seconds(1), new KeyValue(rotation.angleProperty(), 90))
         );
 
+        System.out.println(accessMainStageWidth());
+        System.out.println(accessMainStageHeight());
+
+        //random numbers for variable pillar position and width
+        Random rand = new Random();
+        double rand_dub1 = rand.nextDouble(115,435);
+        double max_allowed_width=accessMainStageWidth()-rand_dub1;
+        double rand_dub2 = rand.nextDouble(45,max_allowed_width);
+        System.out.println("Random Doubles: "+rand_dub1);
+        System.out.println("Random Doubles: "+rand_dub2);
+        next_platform.setLayoutX(rand_dub1);
+        next_platform.setWidth(rand_dub2);
         //Don't make multiple setOnKeyPressed as the code will call the last event handler
         //this is our keyboard input to code execution block
         main_stuff.setOnKeyPressed( event1 -> {
@@ -106,9 +127,6 @@ public class GamePlay  {
     }
 
 
-//    public void initialize(){
-//        startion_platform.setWidth(250);
-//    }
 
     public void pause_game(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pause_menu.fxml")));
