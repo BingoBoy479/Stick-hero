@@ -22,8 +22,8 @@ import java.util.Objects;
 public class GamePlay  {
     private Stage Game_Stage;
     private Scene Game_Scene;
-    private boolean stick_has = true;
-    private boolean stick_rotate = false;
+    private int stick_has = 1;
+    private int stick_rotate = 0;
     private Parent root;
     // private Character character;
     // private Rectangle pillar_current;
@@ -64,11 +64,14 @@ public class GamePlay  {
             switch(event1.getCode()) {
                 case CONTROL:
                     System.out.println("hari om "+ event1.getCode());
-                    if(stick_has) {
-                        stick_generate.play();
-                        stick_has=false;
-                    }else{
-                        System.out.println("Stick already made");
+                    switch(stick_has) {
+                        case 0:
+                            System.out.println("Stick already made");
+                            break;
+                        case 1:
+                            stick_generate.play();
+                            stick_has=0;
+                            break;
                     }
                     break;
                 case SHIFT:
@@ -83,9 +86,14 @@ public class GamePlay  {
                 case CONTROL:
                     System.out.println("hari om");
                     stick_generate.stop();
-                    if(!stick_rotate) {
-                        stick_rotation.play();
-                        stick_rotate=true;
+                    switch(stick_rotate) {
+                        case 0:
+                            stick_rotation.play();
+                            stick_rotate=1;
+                            break;
+                        case 1:
+                            System.out.println("Stick has rotated");
+                            break;
                     }
                     break;
                 case SHIFT:
