@@ -69,6 +69,17 @@ public class GamePlay  {
 
 
     }
+    public void create_pillar(){
+         //random numbers for variable pillar position and width
+        Random rand = new Random();
+        double rand_dub1 = rand.nextDouble(115,435);
+        double max_allowed_width=accessMainStageWidth()-rand_dub1;
+        double rand_dub2 = rand.nextDouble(45,max_allowed_width);
+        System.out.println("Random Doubles: "+rand_dub1);
+        System.out.println("Random Doubles: "+rand_dub2);
+        next_platform.setLayoutX(rand_dub1);
+        next_platform.setWidth(rand_dub2);
+     }
 
     public void initialize() {
 
@@ -93,16 +104,9 @@ public class GamePlay  {
 
         System.out.println(accessMainStageWidth());
         System.out.println(accessMainStageHeight());
+        
 
-        //random numbers for variable pillar position and width
-        Random rand = new Random();
-        double rand_dub1 = rand.nextDouble(115,435);
-        double max_allowed_width=accessMainStageWidth()-rand_dub1;
-        double rand_dub2 = rand.nextDouble(45,max_allowed_width);
-        System.out.println("Random Doubles: "+rand_dub1);
-        System.out.println("Random Doubles: "+rand_dub2);
-        next_platform.setLayoutX(rand_dub1);
-        next_platform.setWidth(rand_dub2);
+        create_pillar();
 
 
 
@@ -171,7 +175,7 @@ public class GamePlay  {
         Game_Stage.setScene(Game_Scene);
         Game_Stage.show();
     }
-    // public void create_pillar(){}
+     
     // public void move_character(){}
     // public void invert_character(){}
     // public void shift_to_Game_Stage(){}
